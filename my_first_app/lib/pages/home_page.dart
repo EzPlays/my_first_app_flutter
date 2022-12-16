@@ -3,8 +3,8 @@ import 'package:my_first_app/pages/widgets/blog_content_widget.dart';
 import 'package:my_first_app/pages/widgets/elevatedbuttom_wiget.dart';
 import 'login_page.dart';
 import 'package:dio/dio.dart';
-import 'dart:convert';
-import 'package:http/http.dart' as http;
+// import 'dart:convert';
+// import 'package:http/http.dart' as http;
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -24,23 +24,23 @@ class _HomePageState extends State<HomePage> {
     "Diamond Hands",
   ];
 
-  late List<dynamic> textb;
-  late Future<dynamic> futureListado;
+  // late List<dynamic> textb;
+  // late Future<dynamic> futureListado;
 
-  Future<dynamic> _getListado() async {
-    var dio = Dio();
-    final response = await dio.get('http://localhost:5000/titlebutoms');
+  // Future<dynamic> _getListado() async {
+  //   var dio = Dio();
+  //   final response = await dio.get('http://localhost:5000/titlebutoms');
 
-    if (response.statusCode == 200) {
-      // response.data;
-      textb = response.data; 
-      print('response statusCode: ${response.statusCode}');
-      print('response title: $textb');
-      return textb;
-    } else {
-      throw Exception('Failed to load album');
-    }
-  }
+  //   if (response.statusCode == 200) {
+  //     // response.data;
+  //     textb = response.data;
+  //     print('response statusCode: ${response.statusCode}');
+  //     print('response title: $textb');
+  //     return textb;
+  //   } else {
+  //     throw Exception('Failed to load album');
+  //   }
+  // }
 
   // main() async {
   //   var dio = Dio();
@@ -56,7 +56,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    futureListado = _getListado();
+    // futureListado = _getListado();
   }
 
   @override
@@ -138,27 +138,30 @@ class _HomePageState extends State<HomePage> {
                       textbuttom: item,
                     ),
 
-                  FutureBuilder<dynamic>(
-                    future: futureListado,
-                    builder: (context, snapshot) {
-                      if (snapshot.hasData) {
-                        for (var i = 0; i <= textb.length; i++) {
-                          return ElevatedContentWidget(
-                            textbuttom: textb[i]['title'],
-                          );
-                        }
-                        // for (var item in textb.length) {
-                        //   
-                        // }
-                      } else if (snapshot.hasError) {
-                        return Text(
-                          '${snapshot.error}',
-                        );
-                      }
-                      // By default, show a loading spinner.
-                      return const CircularProgressIndicator();
-                    },
-                  )
+                  // FutureBuilder<dynamic>(
+                  //   future: futureListado,
+                  //   builder: (context, snapshot) {
+                  //     if (snapshot.hasData) {
+                  //       for (var i = 0; i <= textb.length; i++) {
+                  //         return ListView.builder(
+                  //           shrinkWrap: true,
+                  //           itemBuilder: (context, index) {
+                  //             return ElevatedContentWidget(
+                  //               textbuttom: textb[index]['title'],
+                  //             );
+                  //           },
+                  //           itemCount: textb.length,
+                  //         );
+                  //       }
+                  //     } else if (snapshot.hasError) {
+                  //       return Text(
+                  //         '${snapshot.error}',
+                  //       );
+                  //     }
+                  //     // By default, show a loading spinner.
+                  //     return const CircularProgressIndicator();
+                  //   },
+                  // )
                   // FutureBuilder<dynamic>(
                   //   future: _getListado(),
                   //   builder: (context, snapshot) {
@@ -199,6 +202,35 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
+      // body: FutureBuilder<dynamic>(
+      //   future: futureListado,
+      //   builder: (context, snapshot) {
+      //     if (snapshot.hasData) {
+      //       return ListView.builder(
+      //         itemBuilder: (context, index) {
+      //           return ElevatedContentWidget(
+      //             textbuttom: textb[index]['title'],
+      //           );
+      //         },
+      //         itemCount: textb.length,
+      //       );
+      //       // for (var i = 0; i <= textb.length; i++) {
+      //       //   return ElevatedContentWidget(
+      //       //     textbuttom: textb[i]['title'],
+      //       //   );
+      //       // }
+      //       // for (var item in textb.length) {
+      //       //
+      //       // }
+      //     } else if (snapshot.hasError) {
+      //       return Text(
+      //         '${snapshot.error}',
+      //       );
+      //     }
+      //     // By default, show a loading spinner.
+      //     return const CircularProgressIndicator();
+      //   },
+      // ),
     );
   }
 
