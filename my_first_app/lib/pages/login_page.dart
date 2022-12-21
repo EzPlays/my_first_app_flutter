@@ -52,6 +52,7 @@ class LoginPage extends StatelessWidget {
               ),
               child: const Text('Login'),
             ),
+            const Divider(),
             ElevatedButton(
               onPressed: () {
                 

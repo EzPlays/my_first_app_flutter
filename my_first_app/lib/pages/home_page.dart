@@ -24,13 +24,31 @@ class _HomePageState extends State<HomePage> {
     "Diamond Hands",
   ];
 
+  List blogcontentdata = [
+    {
+      "title": "How to get rich",
+      "image": "images/image1.png",
+    },
+    {
+      "title": "Should you buy today",
+      "image": "images/image2.png",
+    },
+    {
+      "title": "Stock market",
+      "image": "images/image3.png",
+    },
+    {
+      "title": "How to make apps",
+      "image": "images/image4.png",
+    },
+  ];
+
   // late List<dynamic> textb;
   // late Future<dynamic> futureListado;
 
   // Future<dynamic> _getListado() async {
   //   var dio = Dio();
   //   final response = await dio.get('http://localhost:5000/titlebutoms');
-
   //   if (response.statusCode == 200) {
   //     // response.data;
   //     textb = response.data;
@@ -179,26 +197,31 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
             ),
+            //! for blog
+            for (var itemblog in blogcontentdata) BlogBoxWidget(
+              title: itemblog['title'],
+              imagePath: itemblog['image'],
+            ),
             //! First
-            const BlogBoxWidget(
-              title: 'How to get rich',
-              imagePath: 'images/image1.png',
-            ),
-            //! two
-            const BlogBoxWidget(
-              title: 'Should you buy today',
-              imagePath: 'images/image2.png',
-            ),
-            //!tree
-            const BlogBoxWidget(
-              title: 'Stock market',
-              imagePath: 'images/image3.png',
-            ),
-            //!four
-            const BlogBoxWidget(
-              title: 'How to make apps',
-              imagePath: 'images/image4.png',
-            ),
+            // const BlogBoxWidget(
+            //   title: 'How to get rich',
+            //   imagePath: 'images/image1.png',
+            // ),
+            // //! two
+            // const BlogBoxWidget(
+            //   title: 'Should you buy today',
+            //   imagePath: 'images/image2.png',
+            // ),
+            // //!tree
+            // const BlogBoxWidget(
+            //   title: 'Stock market',
+            //   imagePath: 'images/image3.png',
+            // ),
+            // //!four
+            // const BlogBoxWidget(
+            //   title: 'How to make apps',
+            //   imagePath: 'images/image4.png',
+            // ),
           ],
         ),
       ),
@@ -233,11 +256,4 @@ class _HomePageState extends State<HomePage> {
       // ),
     );
   }
-
-  // fortextbuttom() {
-  //   for (var i = 0; i < textbuttoms.length; i++) {
-  //     var textbuttom = textbuttoms[i];
-  //     log(textbuttom);
-  //   }
-  // }
 }
